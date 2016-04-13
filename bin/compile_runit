@@ -11,6 +11,11 @@ CACHE_DIR="$2"
 
 mkdir -p "$BUILD_DIR"
 mkdir -p "$CACHE_DIR"
+
+mkdir -p "$1/bin/"
+cp "bin/runsvdir-dyno" "$1/bin/runsvdir-dyno"
+cp "bin/runsvdir-populate-service-dir" "$1/bin/runsvdir-populate-service-dir"
+
 cd "$BUILD_DIR"
 
 SW_DIR=.sw
@@ -31,6 +36,4 @@ cat > .profile.d/runit.sh <<EOF
 export PATH="\$HOME/$SW_DIR/usr/bin:\$PATH"
 EOF
 
-mkdir -p bin
-cp "$BUILDPACK_DIR/bin/runsvdir-dyno" bin
-cp "$BUILDPACK_DIR/bin/runsvdir-populate-service-dir" bin
+

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# set terminal to UTF8 (otherwise `gem install foreman` fails)
+export LANG=en_CA.UTF-8
+
+BUILD_DIR="$1"
+CACHE_DIR="$2"
+
+mkdir -p "$BUILD_DIR"
+mkdir -p "$CACHE_DIR"
+
+mkdir -p "$1/bin/"
+
+# set up ruby env
+mkdir -p "$GEM_DIR"
+#export GEM_HOME=$PWD/.ruby-gems
+#export PATH=$PATH:$GEM_DIR/bin
+export GEM_HOME="$BUILD_DIR/.ruby-gems"
+export PATH="$GEM_HOME/bin:$PATH"
+
+echo "-----> heroku-soa-buildpack: Ruby GEM home: $GEM_HOME."
+
+# install foreman
+gem install foreman
+
+echo '-----> heroku-soa-buildpack: Foreman installed.'

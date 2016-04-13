@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
-./bin/compile_runit $*
+#./bin/compile_runit $*
 
 ./bin/compile_nginx $*
+
+./bin/compile_rabbitmq $*
+
+#./bin/compile_foreman $*
 
 #copy procfile
 cp config/Procfile "$1/"
 echo '-----> heroku-soa-buildpack: Main Procfile copied to app/'
+
+#copy start.sh
+cp bin/start.sh "$1/bin/"
+echo '-----> heroku-soa-buildpack: Startup script copied to app/bin'
