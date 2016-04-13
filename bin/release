@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-echo "--- {}"
+
+cat << EOF
+---
+default_process_types:
+  web: bin/runsvdir-dyno
+EOF
